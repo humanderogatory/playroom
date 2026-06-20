@@ -1,0 +1,388 @@
+:root {
+  --bg-dark: #0a0a0f;
+  --bg-body: #0e0c15;
+  --purple-deep: #2a1040;
+  --purple-mid: #4a1a6a;
+  --purple-light: #7b3fa0;
+  --blue-soul: #4a6fa5;
+  --blue-pale: #8ab4f8;
+  --green-sick: #3a7a4a;
+  --green-bright: #5ddf6d;
+  --green-toxic: #7fff00;
+  --flesh-pink: #c4917a;
+  --flesh-light: #e8bfa8;
+  --red-blood: #8b1a1a;
+  --red-bright: #ff3344;
+  --stitch-color: #5a4a3a;
+  --stitch-light: #8a7a6a;
+  --text-primary: #d4c8b8;
+  --text-muted: #7a7080;
+  --text-ghost: #3a3545;
+  --yellow-glow: #ffd700;
+  --entry-bg: rgba(14, 12, 21, 0.98);
+  --entry-bg-2: rgba(9, 9, 15, 0.98);
+  --entry-border-a: rgba(123, 63, 160, 0.95);
+  --entry-border-b: rgba(74, 111, 165, 0.95);
+  --entry-border-c: rgba(138, 180, 248, 0.95);
+  --entry-glow: rgba(123, 63, 160, 0.18);
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Special Elite', 'Courier New', monospace;
+  background-color: var(--bg-dark);
+  color: var(--text-primary);
+  min-height: 100vh;
+  position: relative;
+  cursor: crosshair;
+  overflow-x: hidden;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(42, 16, 64, 0.03) 2px,
+      rgba(42, 16, 64, 0.03) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 100px,
+      rgba(74, 106, 165, 0.02) 100px,
+      rgba(74, 106, 165, 0.02) 101px
+    );
+  pointer-events: none;
+  z-index: 0;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    radial-gradient(ellipse at 20% 50%, rgba(123, 63, 160, 0.06) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(58, 122, 74, 0.04) 0%, transparent 40%),
+    radial-gradient(ellipse at 60% 80%, rgba(139, 26, 26, 0.04) 0%, transparent 45%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+::selection {
+  background: var(--purple-mid);
+  color: var(--green-toxic);
+}
+
+.soul-particles {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.soul-particle {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  animation: soulFloat 8s ease-in-out infinite;
+}
+
+@keyframes soulFloat {
+  0% {
+    opacity: 0;
+    transform: translateY(100vh) scale(0);
+  }
+  10% {
+    opacity: 0.7;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10vh) scale(1);
+  }
+}
+
+.stitch-line {
+  width: 100%;
+  height: 3px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stitch-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--stitch-color) 0px,
+    var(--stitch-color) 12px,
+    transparent 12px,
+    transparent 18px
+  );
+}
+
+.stitch-line::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -10%;
+  width: 120%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 15px,
+    var(--stitch-light) 15px,
+    var(--stitch-light) 16px,
+    transparent 16px,
+    transparent 18px
+  );
+  opacity: 0.5;
+}
+
+.header {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(
+    180deg,
+    rgba(42, 16, 64, 0.3) 0%,
+    rgba(14, 12, 21, 0.8) 100%
+  );
+  border-bottom: 1px solid rgba(90, 74, 58, 0.3);
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  margin: 20px 0;
+}
+
+.title-soul {
+  font-size: 3rem;
+  color: var(--blue-pale);
+  animation: soulPulse 3s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(138, 180, 248, 0.5));
+}
+
+@keyframes soulPulse {
+  0%, 100% {
+    transform: scale(1);
+    filter: drop-shadow(0 0 10px rgba(138, 180, 248, 0.3));
+  }
+  50% {
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 25px rgba(138, 180, 248, 0.7));
+  }
+}
+
+.title-text {
+  font-family: 'Creepster', cursive;
+  font-size: clamp(3rem, 8vw, 6rem);
+  background: linear-gradient(
+    135deg,
+    var(--purple-light) 0%,
+    var(--flesh-pink) 30%,
+    var(--blue-pale) 60%,
+    var(--green-bright) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  filter: drop-shadow(0 0 3px rgba(123, 63, 160, 0.4));
+  animation: titleGlitch 5s ease-in-out infinite;
+}
+
+@keyframes titleGlitch {
+  0%, 95%, 100% {
+    transform: translate(0) skew(0);
+  }
+  96% {
+    transform: translate(-3px, 1px) skew(-0.5deg);
+  }
+  97% {
+    transform: translate(3px, -1px) skew(0.5deg);
+  }
+  98% {
+    transform: translate(-1px, 2px) skew(-0.3deg);
+  }
+  99% {
+    transform: translate(2px, -2px) skew(0.2deg);
+  }
+}
+
+.title-sub {
+  font-family: 'Caveat', cursive;
+  font-size: 1.2rem;
+  color: var(--text-muted);
+  letter-spacing: 0.3em;
+  font-weight: 400;
+}
+
+.title-tagline {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 0.95rem;
+  color: var(--text-ghost);
+  margin-bottom: 20px;
+  margin-top: 15px;
+  font-style: italic;
+}
+
+.game-container {
+  position: relative;
+  z-index: 10;
+  max-width: 850px;
+  margin: 30px auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.game-panel {
+  background: rgba(14, 12, 21, 0.95);
+  border: 1px solid rgba(123, 63, 160, 0.4);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 0 40px rgba(123, 63, 160, 0.15);
+  width: 100%;
+  max-width: 700px;
+  text-align: center;
+}
+
+#gameCanvas {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  background: #0a0a0f;
+  border-radius: 8px;
+  cursor: crosshair;
+  display: block;
+  margin: 0 auto;
+  border: 1px solid rgba(138, 180, 248, 0.15);
+  touch-action: none;
+}
+
+.game-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 0 10px;
+  font-family: 'Special Elite', monospace;
+  font-size: 1rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+}
+
+.game-stats span {
+  text-shadow: 0 0 6px rgba(138, 180, 248, 0.2);
+}
+
+.game-btn {
+  margin-top: 16px;
+  padding: 8px 28px;
+  background: transparent;
+  border: 1px solid rgba(123, 63, 160, 0.6);
+  color: var(--blue-pale);
+  font-family: 'Special Elite', monospace;
+  font-size: 0.9rem;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: rgba(18, 15, 29, 0.4);
+}
+
+.game-btn:hover {
+  background: rgba(123, 63, 160, 0.2);
+  box-shadow: 0 0 20px rgba(123, 63, 160, 0.25);
+  transform: scale(1.02);
+}
+
+.footer {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  padding: 40px 20px 50px;
+  margin-top: 30px;
+}
+
+.footer-text {
+  font-family: 'Special Elite', monospace;
+  font-size: 0.8rem;
+  color: var(--text-ghost);
+  letter-spacing: 0.15em;
+  margin-top: 20px;
+  text-transform: uppercase;
+}
+
+.footer-sub {
+  font-family: 'Homemade Apple', cursive;
+  font-size: 0.75rem;
+  color: rgba(58, 53, 69, 0.6);
+  margin-top: 10px;
+  font-style: italic;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-dark);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--purple-deep);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--purple-mid);
+}
+
+@media (max-width: 600px) {
+  .header {
+    padding: 40px 15px 30px;
+  }
+  .title-soul {
+    font-size: 2.2rem;
+  }
+  .game-panel {
+    padding: 12px;
+  }
+  .game-stats {
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+}

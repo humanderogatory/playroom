@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Mahito's Playground</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Gloria+Hallelujah&family=Shadows+Into+Light&family=Special+Elite&family=Creepster&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="soul-particles" id="soulParticles"></div>
+  <div id="cursorTrail"></div>
+
+  <header class="header">
+    <div class="stitch-line top-stitch"></div>
+    <h1 class="title">
+      <span class="title-soul">🜁</span>
+      <span class="title-text">Mahito</span>
+      <span class="title-sub">— 我が魂の遊び場 —</span>
+    </h1>
+    <p class="title-tagline">"Every soul is a playground."</p>
+    <div class="stitch-line bottom-stitch"></div>
+  </header>
+
+  <main class="game-container">
+    <div class="game-panel">
+      <canvas id="gameCanvas"></canvas>
+      <div class="game-stats">
+        <span id="soulCounter">Soul #1</span>
+        <span id="clickCounter">Changes 0 / 20</span>
+      </div>
+      <button id="resetBtn" class="game-btn">New toy</button>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="stitch-line bottom-stitch"></div>
+    <p class="footer-text">I'm just a mirror. Don't hit the mirror.</p>
+    <p class="footer-sub">socials: humanderogatory</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
